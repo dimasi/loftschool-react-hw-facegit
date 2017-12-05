@@ -1,18 +1,16 @@
-import { createActions } from 'redux-actions';
 
-const actionCreators = createActions(
-  {
-    FETCH: {
-      USER: {
-        REQUEST: undefined,
-        SUCCESS: undefined,
-        FAILURE: undefined
-      }
-    }
-  },
-  { namespace: '_' }
+import {createActions} from 'redux-actions';
+
+export const {fetchUserRequest, fetchUserSuccess, fetchUserFailure} = createActions(
+  'FETCH_USER_REQUEST',
+  'FETCH_USER_SUCCESS',
+  'FETCH_USER_FAILURE',
 );
 
-export const fetchUserRequest = actionCreators.fetch.user.request;
-export const fetchUserSuccess = actionCreators.fetch.user.success;
-export const fetchUserFailure = actionCreators.fetch.user.failure;
+export const {fetchTokenOwnerRequest} = createActions('FETCH_TOKEN_OWNER_REQUEST');
+
+export const {fetchFollowersRequest, fetchFollowersSuccess, fetchFollowersFailure} = createActions(
+  'FETCH_FOLLOWERS_REQUEST',
+  'FETCH_FOLLOWERS_SUCCESS',
+  'FETCH_FOLLOWERS_FAILURE',
+);
