@@ -13,7 +13,8 @@ export const clearTokenApi = () => {
 };
 
 export const getUserInformation = login => instance(`users/${login}`);
-export const getUserFollowers = login => instance(`users/${login}/followers?pages=1&per_page=100`);
+export const getUserFollowers = login => 
+  instance(`users/${login}/followers?pages=1&per_page=100`);
 export const getUserRepos = login => instance(`users/${login}/repos`);
 
 export const getSignInUrl = () =>

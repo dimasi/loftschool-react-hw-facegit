@@ -1,13 +1,13 @@
-import {authFlow} from '../auth';
-import {authorize, logout} from '../../actions/auth';
-import {select, call, take} from 'redux-saga/effects';
-import {getIsAuthorized} from '../../reducers/auth';
+import { authFlow } from './auth';
+import { authorize, logout } from './../actions/auth';
+import { select, call, take } from 'redux-saga/effects';
+import { getIsAuthorized } from './../reducers/auth';
 import {
   getTokenFromLocalStorage,
   setTokenToLocalStorage,
-  removeTokenFromLocalStorage,
-} from '../../localStorage';
-import {setTokenApi, clearTokenApi} from '../../api';
+  removeTokenFromLocalStorage
+} from './../localStorage';
+import { setTokenApi, clearTokenApi } from './../api';
 
 describe('Сага authFlow', () => {
   const saga = authFlow();
@@ -27,7 +27,9 @@ describe('Сага authFlow', () => {
     });
 
     it('4. Эфект call(setTokenApi, token) где токен, который получен из прошлого шага', () => {
-      expect(saga.next({payload: token}).value).toEqual(call(setTokenApi, token));
+      expect(saga.next({ payload: token }).value).toEqual(
+        call(setTokenApi, token)
+      );
     });
 
     it('5. Эфект call setTokenToLocalStorage', () => {

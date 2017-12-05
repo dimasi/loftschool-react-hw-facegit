@@ -3,22 +3,26 @@ body {
   padding: 0;
   background-color: #fffbf4;
   color: #4a4a4a;
-  font-family: sans-serif; }
+  font-family: sans-serif;
+}
 
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 :focus {
-  outline: 0 none; }
+  outline: 0 none;
+}
 
 ::-webkit-input-placeholder {
-  color: #ccc; }
-
+  color: #ccc;
+}
 ::-moz-placeholder {
-  color: #ccc; }
-
+  color: #ccc;
+}
 :-moz-placeholder {
-  color: #ccc; }
-
+  color: #ccc;
+}
 :-ms-input-placeholder {
-  color: #ccc; }
+  color: #ccc;
+}

@@ -1,0 +1,5 @@
+.Followers {
+  width: 100%; }
+  .Followers__grid {
+    display: flex;
+    flex-wrap: wrap; }
