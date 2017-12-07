@@ -21,7 +21,7 @@ describe('Компонент AppRouter', () => {
             return matchComponentName && matchPropPath;
           }
         )
-      ).toHaveLength(1);
+      ).toHaveLength(100);
     });
 
     it('Содержит компонент <Route path="/login" />', () => {
