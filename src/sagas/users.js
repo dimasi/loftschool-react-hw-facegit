@@ -1,20 +1,27 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import {
+  fetchTokenOwnerRequest,
   fetchUserRequest,
   fetchUserSuccess,
   fetchUserFailure
 } from './../actions/users';
-import { getUserInformation } from '../api';
+import { getUserInformation, getTokenOwner } from '../api';
+import requestFlow from './request';
 
 export function* fetchUserSaga(action) {
   try {
-    const user = yield call(getUserInformation, action.payload);
-    yield put(fetchUserSuccess(user));
-  } catch (e) {
-    yield put(fetchUserFailure(e));
+    let response;
+    if (fetchTokenOwnerRequest.toString() === action.type) {
+      response = yield call(requestFlow, getTokenOwner, action.payload);
+    } else {
+      response = yield call(requestFlow, getUserInformation, action.payload);
+    }
+    yield put(fetchUserSuccess(response.data));
+  } catch (error) {
+    yield put(fetchUserFailure(error));
   }
 }
 
 export function* fetchUserWatch() {
-  yield takeLatest(fetchUserRequest, fetchUserSaga);
+  yield takeLatest([fetchUserRequest, fetchTokenOwnerRequest], fetchUserSaga);
 }

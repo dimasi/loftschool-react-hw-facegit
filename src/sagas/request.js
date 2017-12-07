@@ -10,7 +10,9 @@ export default function*(fn, args) {
     return response;
   } catch (error) {
     yield put(networkError(error));
-    if (error.response.status === 401) yield put(logout());
+    if (error.response.status === 401) {
+      yield put(logout());
+    }
 
     throw error;
   }

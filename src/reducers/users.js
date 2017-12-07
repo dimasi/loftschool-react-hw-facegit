@@ -3,12 +3,14 @@ import { handleActions } from 'redux-actions';
 import {
   fetchUserRequest,
   fetchUserSuccess,
-  fetchUserFailure
+  fetchUserFailure,
+  fetchTokenOwnerRequest
 } from './../actions/users';
 
 const isFetching = handleActions(
   {
     [fetchUserRequest]: (state, action) => true,
+    [fetchTokenOwnerRequest]: (state, action) => true,
     [fetchUserSuccess]: (state, action) => false,
     [fetchUserFailure]: (state, action) => false
   },

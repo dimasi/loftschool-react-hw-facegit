@@ -1,24 +1,17 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
-import { setToken, authorize } from './../actions/auth';
-
-const token = handleActions(
-  {
-    [setToken]: (state, action) => action.payload
-  },
-  null
-);
+import { authorize, logout } from './../actions/auth';
 
 const isAuthorized = handleActions(
   {
-    [authorize]: (state, action) => true
+    [authorize]: (state, action) => true,
+    [logout]: (state, action) => false
   },
   false
 );
 
 export default combineReducers({
-  token
+  isAuthorized
 });
 
-export const getToken = state => state.auth.token;
-export const getIsAuthorized = state => isAuthorized;
+export const getIsAuthorized = state => state.auth.isAuthorized;

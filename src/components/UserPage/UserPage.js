@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { fetchUserRequest } from './../../actions/users';
+import { fetchTokenOwnerRequest, fetchUserRequest } from './../../actions/users';
 import Loader from './../Loader';
 import Followers from './../Followers';
 
@@ -14,10 +14,15 @@ export class UserPage extends PureComponent {
           name
         }
       },
-      fetchUserRequest
+      fetchUserRequest,
+      fetchTokenOwnerRequest
     } = this.props;
 
-    fetchUserRequest(name);
+    if (name == null) {
+      fetchTokenOwnerRequest();
+    } else {
+      fetchUserRequest(name);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -133,7 +138,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  fetchUserRequest
+  fetchUserRequest,
+  fetchTokenOwnerRequest
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPage);

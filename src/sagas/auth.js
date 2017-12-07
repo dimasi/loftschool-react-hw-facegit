@@ -1,5 +1,5 @@
 import { authorize, logout } from '../actions/auth';
-import { take, put, call, select } from 'redux-saga/effects';
+import { fork, take, put, call, select } from 'redux-saga/effects';
 import { setTokenApi, clearTokenApi } from '../api';
 import { getIsAuthorized } from '../reducers/auth';
 import {
@@ -32,4 +32,6 @@ export function* authFlow() {
   }
 }
 
-export function* setTokenWatch() {}
+export function* setTokenWatch() {
+  yield fork(authFlow);
+}
