@@ -5,11 +5,12 @@ import {logout} from '../actions/auth';
 import {getIsNetworkErrorPresent} from '../reducers/network';
 import {getUserInformation} from '../api';
 
-describe.skip('Сага authFlow', () => {
+describe('Сага authFlow', () => {
   const login = 'dimasi';
-  const saga = requestFlow(getUserInformation, login);
 
   describe('Ветка без ошибок', () => {
+    const saga = requestFlow(getUserInformation, login);
+
     it('1. Эффект call getUserInformation', () => {
       expect(saga.next(login).value).toEqual(call(getUserInformation, login));
     });
@@ -19,14 +20,24 @@ describe.skip('Сага authFlow', () => {
     });
 
     it('3. Эффект put clearNetworkErrors', () => {
-      expect(saga.next().value).toEqual(put(clearNetworkErrors()));
+      expect(saga.next(true).value).toEqual(put(clearNetworkErrors()));
     });
   });
 
-  describe.skip('Ветка с ошибками', () => {
-    it('1. Эффект call getUserInformation', () => {
+  describe('Ветка с ошибками', () => {
+    const saga = requestFlow(getUserInformation, login);
+
+    it('1. Эффект call getUserInformation с ошибкой', () => {
       const error = new Error('test error');
-      expect(saga.throw(error).value).toEqual(call(getUserInformation, login));
+      error.response = {
+        status: 401
+      }
+      saga.next();
+      expect(saga.throw(error).value).toEqual(put(networkError(error)));
+    });
+    
+    it('2. Эффект put logout', () => {
+      expect(saga.next().value).toEqual(put(logout()));
     });
   });
 });
