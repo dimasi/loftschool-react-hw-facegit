@@ -1,5 +1,3 @@
-#! /user/env sh
-
 set -e
 zip -r build.zip build
 
