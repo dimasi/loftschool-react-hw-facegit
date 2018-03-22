@@ -1,0 +1,76 @@
+.App {
+  width: 740px;
+  min-height: 100vh;
+  padding: 30px 15px 15px;
+  margin: 0 auto;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); }
+  .App__textfield {
+    width: 100%;
+    height: 46px;
+    padding: 0 10px;
+    position: relative;
+    z-index: 2;
+    border: 1px solid #ccc;
+    color: #4a4a4a;
+    font-size: 18px; }
+  .App__text {
+    margin: 10px 0;
+    font-size: 16px; }
+    .App__text_small {
+      font-size: 14px; }
+    .App__text_muted {
+      color: #a8a8a8; }
+  .App__link {
+    border-bottom: 1px dotted;
+    opacity: 0.8;
+    color: #4a4a4a;
+    text-decoration: none; }
+    .App__link:hover {
+      opacity: 1; }
+  .App__heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    position: relative; }
+    .App__heading::after {
+      content: "";
+      display: block;
+      width: 80%;
+      height: 2px;
+      position: absolute;
+      z-index: 1;
+      top: 39px;
+      left: 10%;
+      background-color: #4a4a4a; }
+  .App__heading-text {
+    display: inline-block;
+    padding: 0 15px;
+    position: relative;
+    z-index: 2;
+    background-color: #fff;
+    font-size: 22px;
+    text-transform: uppercase; }
+  .App__logout {
+    position: absolute;
+    top: -1px;
+    right: 10px;
+    padding: 4px 15px;
+    border: 0 none;
+    background: none #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    color: rgba(74, 74, 74, 0.8);
+    font-size: 10px;
+    text-transform: uppercase;
+    cursor: pointer; }
+    .App__logout:hover {
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      color: #4a4a4a; }
+  .App__network-error-msg {
+    padding: 12px 10px;
+    margin: 0 0 20px;
+    background-color: #ff0000;
+    color: #fff;
+    text-align: center; }

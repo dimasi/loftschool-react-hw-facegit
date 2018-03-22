@@ -1,0 +1,60 @@
+.Loader {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  top: 0;
+  left: 0;
+
+  &__spinner {
+    width: 72px;
+    height: 72px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__animation {
+    width: 72px;
+    height: 72px;
+    position: relative;
+    animation: spin 2s linear infinite;
+
+    &,
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      border: 3px solid transparent;
+      border-top-color: #4a4a4a;
+      border-radius: 50%;
+    }
+
+    &::before {
+      top: 13px;
+      right: 13px;
+      bottom: 13px;
+      left: 13px;
+      animation: spin 1.5s linear infinite;
+    }
+
+    &::after {
+      top: 5px;
+      right: 5px;
+      bottom: 5px;
+      left: 5px;
+      animation: spin 3s linear infinite;
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

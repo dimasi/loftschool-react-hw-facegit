@@ -7,5 +7,5 @@ export function setTokenToLocalStorage(token) {
 }
 
 export function removeTokenFromLocalStorage() {
-  localStorage.removeItem('access_token');
+  window.localStorage.clear();
 }
