@@ -56,13 +56,13 @@ export class UserPage extends PureComponent {
 
     if (isFetching) {
       return <Loader />;
-    } else {
-      if (!user) {
-        return this.renderErrorMsg();
-      } else {
-        return this.renderUser();
-      }
     }
+
+    if (!user) {
+      return this.renderErrorMsg();
+    }
+
+    return this.renderUser();
   }
 
   renderErrorMsg = () => (
